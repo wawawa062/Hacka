@@ -11,6 +11,19 @@ class PostController extends Controller
     public function index(Post $post)
     {
         return view('posts/index')->with(['posts' => $post->getPaginateByLimit()]);
+        
+        @now == now();
+        $displayDate = Carbon::parse('16:00:00');
+        
+        if (@now >= $displayDate) {
+            return view( 'sp-page');
+        } else {
+            return view('not-availabe-page');
+        }
+        
+        $posts = Post::withCount('likes')->orderBy('likes_count', 'desc')->get();
+        
+        return view('posts/ranking', compact('posts'));
     }
 
     public function show(Post $post)

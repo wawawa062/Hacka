@@ -8,7 +8,8 @@
     </head>
     <body>
         <h1>チーム開発会へようこそ！</h1>
-        <h2>投稿一覧画面</h2>
+        <h2 class="ranking"><a href="/posts">ランキング表示</a></h2>
+        <h3>投稿一覧画面</h3>
         <a href='/posts/create'>新規投稿</a>
         <div>
             @foreach ($posts as $post)
