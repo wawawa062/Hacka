@@ -7,7 +7,7 @@
     <body>
         <h1>チーム開発会へようこそ！</h1>
         <h2>投稿作成</h2>
-        <form action="/posts" method="POST">
+        <form action="/posts" method="POST" enctype="multipart/form-data">
             @csrf
             <div>
                 <h2>タイトル</h2>
@@ -20,6 +20,9 @@
                 <p class="body__error" style="color:red">{{ $errors->first('post.body') }}</p>
             </div>
             <div>
+                <div class="image">
+                    <input type="file" name="image">
+                </div>
                 <h2>カテゴリー</h2>
                 <select name="post[category_id]">
                     @foreach($categories as $category)
