@@ -10,9 +10,10 @@ class Post extends Model
     use HasFactory;
 
     protected $fillable = [
-        'title',
         'body',
-        'category_id',
+        'image_url',
+        'is_paripi',
+        'user_id',
     ];
 
     public function getPaginateByLimit(int $limit_count = 5)

@@ -16,9 +16,10 @@ return new class extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->string('body', 200);
-            $table->string('image');
-            $table->integer('size_image');
+        
+          
             $table->foreignId('user_id')->constrained('users');
+            $table->string('image_url')->nullable();
             $table->boolean('is_paripi');
             $table->timestamps();
             $table->softDeletes();
