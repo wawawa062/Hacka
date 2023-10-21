@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('replies', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->striing('content')->nullable();
+            $table->string('content')->nullable();
             $table->forienid('user_id')->constrained('users');
             $table->forienid('post_id')->constrained('posts');
         });
