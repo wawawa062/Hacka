@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->string('content')->nullable();
-            $table->forienid('user_id')->constrained('users');
-            $table->forienid('post_id')->constrained('posts');
+            $table->foreignid('user_id')->constrained('users');
+            $table->foreignid('post_id')->constrained('posts');
         });
     }
 
