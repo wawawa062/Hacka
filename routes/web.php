@@ -41,4 +41,7 @@ Route::post('/posts/comment/store','CommentController@store')->name('comment.sto
 
 
 
+Route::get('/post/like/{id}', [PostController::class, 'like'])->name('post.like');
+Route::get('/post/unlike/{id}', [PostController::class, 'unlike'])->name('post.unlike');
+
 require __DIR__.'/auth.php';
