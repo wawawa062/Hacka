@@ -7,6 +7,8 @@ use App\Models\Post;
 use App\Models\Category;
 use Cloudinary; 
 use Illuminate\Support\Facades\Auth;
+use App\Models\Reply;
+use App\Models\Like;
 
 class PostController extends Controller
 {
@@ -56,8 +58,35 @@ class PostController extends Controller
     {
         $input_post = $request['post'];
         $post->fill($input_post)->save();
-
+        
         return redirect('/posts/' . $post->id);
     }
     
+       public function __construct()
+  {
+    $this->middleware(['auth', 'verified'])->only(['like', 'unlike']);
+  }
+ 
+  
+   public function like($id)
+  {
+    Like::create([
+      'post_id' => $id,
+      'user_id' => Auth::id(),
+    ]);
+
+    session()->flash('success', 'You Liked the Reply.');
+
+    return redirect()->back();
+  }
+  
+  
+   public function unlike($id)
+  {
+    $like = Like::where('post_id', $id)->where('user_id', Auth::id())->first();
+    $like->delete();
+
+    session()->flash('success', 'You Unliked the Reply.');
+    return redirect()->back();
+  }
 }
