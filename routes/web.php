@@ -40,4 +40,7 @@ Route::get('/', [PostController::class, 'index']); //メイン画面表示
 
 
 
+Route::get('/post/like/{id}', [PostController::class, 'like'])->name('post.like');
+Route::get('/post/unlike/{id}', [PostController::class, 'unlike'])->name('post.unlike');
+
 require __DIR__.'/auth.php';

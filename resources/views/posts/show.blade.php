@@ -17,6 +17,17 @@
             <img src="{{ $post->image_url }}" alt="画像が読み込めません。"/>
         </div>
         @endif
+        
+        <div>
+          @if($post->is_liked_by_auth_user())
+            <a href="{{ route('post.unlike', ['id' => $post->id]) }}" class="btn btn-success btn-sm">いいね<span class="badge">{{ $post->likes->count() }}</span></a>
+          @else
+            <a href="{{ route('post.like', ['id' => $post->id]) }}" class="btn btn-secondary btn-sm">いいね<span class="badge">{{ $post->likes->count() }}</span></a>
+          @endif
+        </div>
+        <div>
+             {{ $post->likes->count() }}
+        </div>
         <div>
             <p class="edit">[<a href="/posts/{{ $post->id }}/edit">編集</a>]</p>
             <a href="/">戻る</a>
