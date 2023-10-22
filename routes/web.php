@@ -34,6 +34,8 @@ Route::middleware('auth')->group(function () {
 Route::get('/posts/create', [PostController::class, 'create']);  //投稿フォームの表示
 Route::post('/posts', [PostController::class, 'store']);  //画像を含めた投稿の保存処理
 Route::get('/surprise/show', [RedirectController::class, 'show']); //特定ページへの遷移
+Route::get('/posts/kyapi', [PostController::class, 'kyapi']);
+Route::get('/posts/jimmy', [PostController::class, 'jimmy']);
 Route::get('/posts/{post}', [RedirectController::class, 'checkAndRedirect']);  //投稿の詳細表示
 Route::get('/', [PostController::class, 'index']); //メイン画面表示
 Route::get('/posts/{post}/edit', [PostController::class, 'edit']);

@@ -89,4 +89,16 @@ class PostController extends Controller
     session()->flash('success', 'You Unliked the Reply.');
     return redirect()->back();
   }
+  
+   public function kyapi(Post $post)
+    {
+       $kyapis= Post::withCount('likes')->where('is_paripi', true)->orderBy('likes_count', 'desc')->Paginate(5);
+       return view('/posts/kyapi')->with(['kyapi_posts' =>$kyapis]);
+    }
+   
+   public function jimmy(Post $post)
+   {
+       $jimmys= Post::withCount('likes')->where('is_paripi', false)->orderBy('likes_count', 'desc')->Paginate(5);
+       return view('/posts/jimmy')->with(['jimmy_posts' =>$jimmys]);
+   }
 }
