@@ -3,7 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
-
+use App\Http\Controllers\RepliesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,5 +33,8 @@ Route::middleware('auth')->group(function () {
 Route::get('/posts/create', [PostController::class, 'create']);  //投稿フォームの表示
 Route::post('/posts', [PostController::class, 'store']);  //画像を含めた投稿の保存処理
 Route::get('/posts/{post}', [PostController::class, 'show']); //投稿詳細画面の表示
+
+Route::get('/post/like/{id}', [PostController::class, 'like'])->name('post.like');
+Route::get('/post/unlike/{id}', [PostController::class, 'unlike'])->name('post.unlike');
 
 require __DIR__.'/auth.php';
