@@ -8,4 +8,5 @@
     </head>
     <body style="background-color: purple;">
         <h1 style="text-align: center; color: yellow;">Happy Halloween!!!</h1>
+        <h2 style="text-align: center; color: yellow;"><a href="/">戻る</a></h2>
         
