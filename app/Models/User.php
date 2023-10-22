@@ -8,6 +8,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\Region;
+use App\Models\Comment;
+use App\Models\Post;
 
 class User extends Authenticatable
 {
@@ -47,5 +49,15 @@ class User extends Authenticatable
     public function regions()
     {
         return $this->belongsTo(Region::clsss);
+    }
+    
+    public function posts()
+    {
+        return $this->hasMany('App\Models\Post');
+    }
+    
+    public function comments()
+    {
+        return $this->hasMany('App\Models\Comment');
     }
 }

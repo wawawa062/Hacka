@@ -16,7 +16,10 @@
                     <p>
                         本文：<a href="/posts/{{ $post->id }}">{{ $post->body }}</a>
                     </p>
-                    <p>画像：<a href="/posts/{{ $post->id }}">{{ $post->image_url }}</a></p>
+                    <p>
+                        画像：<a href="/posts/{{ $post->id }}">{{ $post->image_url }}</a>
+                    </p>
+                    <a href='/posts/comment'>コメントする</a></a>
                 </div>
             @endforeach
         </div>
