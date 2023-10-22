@@ -10,7 +10,6 @@
     <body>
         <h1>詳細画面</h1>
         <div>
-            <p>タイトル：{{ $post->title }}</p>
             <p>本文：{{ $post->body }}</p>
         </div>
         @if($post->image_url)
