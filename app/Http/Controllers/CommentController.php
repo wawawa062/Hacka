@@ -4,25 +4,29 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Comment;
+use App\Models\Post;
 
 class CommentController extends Controller
 {
-    public function comment()
+    public function comment(Post $post)
     {
-        return view('posts/comment');
+        return view('posts/comment')->with(['post_id'=>$post->id]);
     }
     
     public function store(Request $request)
     {
-        $inputs = request()->validate([
-            'body' => 'required|max:255'
-        ]);
+
 
         $comment = Comment::create([
-            'body' => $inputs['body'],
+            'body' => $request["comment"]["body"],
             'user_id' => auth()->user()->id,
-            'post_id' => $request->post_id
+            'post_id' => $request["comment"]["post_id"],
         ]);
         return back();
+    }
+    
+    public function show(Comment $comment, Post $post)
+    {
+        return view('posts/comment_show')->with(['comments'=>$post->comments()->get()]);
     }
 }

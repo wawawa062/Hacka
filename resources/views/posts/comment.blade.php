@@ -14,6 +14,7 @@
                 <textarea name="comment[body]" placeholder="コメントを残す"></textarea>
                 <p class="body__error" style="color:red">{{ $errors->first('post.body') }}</p>
             </div>
+            <input type="hidden" name="comment[post_id]" value={{$post_id}}>
             <input type="submit" value="保存"/>
         </form>
         <div><a href="/">戻る</a></div>
