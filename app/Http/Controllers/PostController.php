@@ -16,18 +16,18 @@ class PostController extends Controller
     {
         return view('posts/index')->with(['posts' => $post->getPaginateByLimit()]);
         
-        @now == now();
-        $displayDate = Carbon::parse('16:00:00');
+        // @now == now();
+        // $displayDate = Carbon::parse('16:00:00');
         
-        if (@now >= $displayDate) {
-            return view( 'sp-page');
-        } else {
-            return view('/not-available-page');
-        }
+        // if (@now >= $displayDate) {
+        //     return view( 'sp-page');
+        // } else {
+        //     return view('/not-available-page');
+        // }
         
-        $posts = Post::withCount('likes')->orderBy('likes_count', 'desc')->get();
+        // $posts = Post::withCount('likes')->orderBy('likes_count', 'desc')->paginate(5);
         
-        return view('posts/ranking', compact('posts'));
+        // return view('posts/ranking', compact('posts'));
     }
 
      public function create(Category $category)

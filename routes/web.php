@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\RedirectController;
+use App\Http\Controllers\CommentController;
 
 
 /*
@@ -31,6 +32,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::post('/posts/comment', [CommentController::class, 'store']);//投稿に対するコメント保存
 Route::get('/posts/create', [PostController::class, 'create']);  //投稿フォームの表示
 Route::post('/posts', [PostController::class, 'store']);  //画像を含めた投稿の保存処理
 Route::get('/surprise/show', [RedirectController::class, 'show']); //特定ページへの遷移
@@ -40,6 +42,9 @@ Route::get('/posts/{post}', [RedirectController::class, 'checkAndRedirect']);  /
 Route::get('/', [PostController::class, 'index']); //メイン画面表示
 Route::get('/posts/{post}/edit', [PostController::class, 'edit']);
 Route::put('/posts/{post}', [PostController::class, 'update']);
+Route::get('/posts/{post}/comment', [CommentController::class, 'comment']);
+Route::get('/posts/{post}/comment_show', [CommentController::class, 'show']); //特定ページへの遷移
+
 
 
 

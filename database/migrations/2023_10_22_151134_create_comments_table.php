@@ -1,4 +1,3 @@
-
 <?php
 
 use Illuminate\Database\Migrations\Migration;
@@ -14,12 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('posts', function (Blueprint $table) {
+        Schema::create('comments', function (Blueprint $table) {
             $table->id();
             $table->string('body', 200);
             $table->foreignId('user_id')->constrained('users');
-            $table->string('image_url')->nullable();
-            $table->boolean('is_paripi');
+            $table->foreignId('post_id')->constrained('posts');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -32,7 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('posts');
+        Schema::dropIfExists('comments');
     }
 };
-

@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
+use App\Models\Comment;
 
 class Post extends Model
 {
@@ -48,4 +50,13 @@ class Post extends Model
       return false;
     }
   }
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User');
+    }
+    
+    public function comments()
+    {
+        return $this->hasMany('App\Models\Comment');
+    }
 }
