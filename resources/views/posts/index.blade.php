@@ -14,9 +14,9 @@
             @foreach ($posts as $post)
                 <div style='border:solid 1px; margin-bottom: 10px;'>
                     <p>
-                        タイトル：<a href="/posts/{{ $post->id }}">{{ $post->title }}</a>
+                        本文：<a href="/posts/{{ $post->id }}">{{ $post->body }}</a>
                     </p>
-                    <p>カテゴリー：<a href="/categories/{{ $post->category->id }}">{{ $post->category->name }}</a></p>
+                    <p>画像：<a href="/posts/{{ $post->id }}">{{ $post->image_url }}</a></p>
                 </div>
             @endforeach
         </div>

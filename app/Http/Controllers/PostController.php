@@ -13,13 +13,22 @@ class PostController extends Controller
     public function index(Post $post)
     {
         return view('posts/index')->with(['posts' => $post->getPaginateByLimit()]);
+        
+        @now == now();
+        $displayDate = Carbon::parse('16:00:00');
+        
+        if (@now >= $displayDate) {
+            return view( 'sp-page');
+        } else {
+            return view('/not-available-page');
+        }
+        
+        $posts = Post::withCount('likes')->orderBy('likes_count', 'desc')->get();
+        
+        return view('posts/ranking', compact('posts'));
     }
 
-    public function show(Post $post)
-    {
-        return view('posts/show')->with(['post' => $post]);
-    }
- public function create(Category $category)
+     public function create(Category $category)
     {
         return view('posts/create')->with(['categories' => $category->get()]);
     }
