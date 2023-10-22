@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\RedirectController;
 
 
 /*
@@ -32,6 +33,11 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/posts/create', [PostController::class, 'create']);  //投稿フォームの表示
 Route::post('/posts', [PostController::class, 'store']);  //画像を含めた投稿の保存処理
-Route::get('/posts/{post}', [PostController::class, 'show']); //投稿詳細画面の表示
+Route::get('/surprise/show', [RedirectController::class, 'show']); //特定ページへの遷移
+Route::get('/posts/{post}', [RedirectController::class, 'checkAndRedirect']);  //投稿の詳細表示
+Route::get('/', [PostController::class, 'index']); //メイン画面表示
+
+
+
 
 require __DIR__.'/auth.php';
