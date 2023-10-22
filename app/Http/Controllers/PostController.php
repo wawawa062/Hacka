@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Category;
 use Cloudinary; 
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -18,17 +19,21 @@ class PostController extends Controller
     {
         return view('posts/show')->with(['post' => $post]);
     }
-
-    public function create(Category $category)
+ public function create(Category $category)
     {
         return view('posts/create')->with(['categories' => $category->get()]);
     }
 
     public function store(Post $post, Request $request)
     {
-         $image_url = Cloudinary::upload($request->file('image')->getRealPath())->getSecurePath();
-        dd($image_url);  //画像のURLを画面に表示
-        $input = $request['post'];
+          $input = $request['post'];
+         if($request->file('image'))
+         { 
+             $image_url = Cloudinary::upload($request->file('image')->getRealPath())->getSecurePath();
+            $input += ['image_url' => $image_url];
+         }
+   $input +=["user_id"=>Auth::id()];
+   
         $post->fill($input)->save();
         return redirect('/posts/' . $post->id);
     }
