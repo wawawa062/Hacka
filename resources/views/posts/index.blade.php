@@ -19,7 +19,14 @@
                     <p>
                         画像：<a href="/posts/{{ $post->id }}">{{ $post->image_url }}</a>
                     </p>
-                    <a href='/posts/comment'>コメントする</a></a>
+                    <a href='/posts/aa/comment'>コメントする</a>
+                    <div class="comment_text">
+                        @if ($post->comments->count())
+                        <div class="edit"><a href="/posts/{{ $post->id }}/edit">edit</a></div>
+                        @else
+                        <span>コメントはまだありません。</span>
+                        @endif
+                    </div>
                 </div>
             @endforeach
         </div>

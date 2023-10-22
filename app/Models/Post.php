@@ -4,12 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-<<<<<<< HEAD
+use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Comment;
-=======
-use Illuminate\Support\Facades\Auth;
->>>>>>> origin/master
 
 class Post extends Model
 {
@@ -33,17 +30,6 @@ class Post extends Model
         return $this->belongsTo(Category::class);
     }
     
-<<<<<<< HEAD
-    public function user()
-    {
-        return $this->belongsTo('App\Models\User');
-    }
-    
-    public function comments()
-    {
-        return $this->hasMany('App\Models\Comment');
-    }
-=======
       public function likes()
   {
     return $this->hasMany(Like::class, 'post_id');
@@ -64,5 +50,13 @@ class Post extends Model
       return false;
     }
   }
->>>>>>> origin/master
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User');
+    }
+    
+    public function comments()
+    {
+        return $this->hasMany('App\Models\Comment');
+    }
 }
