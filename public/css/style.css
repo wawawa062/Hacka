@@ -1,0 +1,31 @@
+header {
+    color: #000000;
+    background-color: #ffa500;
+}
+
+body{
+    background-color: #ffffe0;
+}
+
+p {
+    line-height: 150%;
+}
+
+.badge {
+    border-bottom-style: groove;
+      width: 600px;
+      height: 450px;
+      border-left-width: 1px;
+      border-left-style: solid;
+      border-left-color: gray;
+      padding: 1em;
+}
+
+.design {
+    color: #000000;
+    background-color: #ffa500;
+}
+
+.heeader {
+    
+}

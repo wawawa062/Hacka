@@ -1,7 +1,9 @@
 <x-app-layout>
+    <div class="header">
     <x-slot name="header">
         　投稿詳細
     </x-slot>    
+    </div>
     <!DOCTYPE HTML>
     <html lang="{{ str_replace("_", "-", app()->getLocale()) }}">
         <head>
@@ -10,8 +12,10 @@
             <title>Posts</title>
             <!-- Fonts -->
             <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+            <link rel="stylesheet" href="{{ asset('/css/style.css')  }}" >
         </head>
         <body>
+              <div class="design">
             <div>
                 <p>本文：{{ $post->body }}</p>
             </div>
@@ -33,6 +37,7 @@
             <div>
                 <p class="edit">[<a href="/posts/{{ $post->id }}/edit">編集</a>]</p>
                 <a href="/">戻る</a>
+            </div>
             </div>
         </body>
     </html>

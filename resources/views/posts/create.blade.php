@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        　（投稿作成）
+        　投稿作成
     </x-slot>
     <!DOCTYPE HTML>
     <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
